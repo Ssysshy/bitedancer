@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>两数之和</title>
+</head>
+<body>
+  <script type="text/javascript">
+    const nums = [2,7,11,15]
+    const target = 9;
+
+    function twosum(nums, target) {
+      const map = {};
+      for (let i = 0; i < nums.length; i++) {
+        const curNum = nums[i];
+        const moveIndex = map[target - curNum];
+        if (moveIndex !== undefined) {
+          return [moveIndex, i];
+        } else {
+          map[curNum] = i;
+        }
+      }
+    }
+
+    console.log(twosum(nums, target));
+
+  </script>
+</body>
+</html>

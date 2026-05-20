@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>combinationSum</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+
+    const candidates = [2, 3, 6, 7];
+    const target = 7;
+
+    const combinationSum = function (candidates, target) {
+      const result = [];
+
+      const backTrack = (path, init, remain) => {
+        if (remain === 0) {
+          result.push([...path]);
+          return;
+        }
+        console.log(remain, 'remain');
+
+        for (let i = init; i < candidates.length; i++) {
+          const num = candidates[i];
+          if (num > remain) {
+            break;
+          }
+          path.push(num);
+          backTrack(path, i, remain - num);
+          path.pop();
+        }
+      };
+
+      backTrack([], 0, target);
+
+      return result;
+    };
+
+    var mySqrt = function (x) {
+
+      if (x === 0 || x === 1) return x;
+
+      let left = 1,
+        right = x,
+        result = -1;
+
+      while (left <= right) {
+        const mid = left + ((right - left) >> 1);
+        const suq = mid * mid;
+        if (s === x) {
+          return mid;
+        } else if (suq < x) {
+          result = mid; // 记录可能得值
+          left = mid + 1;
+        } else {
+          right = mid - 1;
+        }
+      }
+
+      return result;
+    };
+
+    console.log(combinationSum(candidates, target));
+
+  </script>
+</body>
+
+</html>
